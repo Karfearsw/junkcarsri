@@ -1,0 +1,80 @@
+Here’s a high-converting AI prompt for generating a **lead generation website for junk cars in Rhode Island**, tailored for *Pawtucket Cash for Cars* with features that maximize call-ins, lowball quotes, crawler SEO, and conversion psychology. You can use this for GPT-4, Claude, or Replit’s AI agents to build your site and ad copy:
+
+***
+
+**Prompt:**
+
+> You are an expert conversion copywriter and web experience designer. Build a fully SEO-optimized, highly engaging lead generation website for “Pawtucket Cash for Cars”—a junk car removal and towing business serving Rhode Island. The site’s goal is to generate high-volume leads, phone calls, and click-throughs for cash-for-cars services, and to outperform competitors like petteyauto.com.
+>
+> Key instructions:
+>
+> - **Features:**  
+>   - Prominently feature a “Call Now” button, sticky header on mobile and desktop with direct local phone link.  
+>   - Highlight *“Free, Fast Quote”* form (ask for car details, contact info).
+>   - Auto-generate instant, intentionally lowball quote (below market avg), but use persuasive copy motivating users to call for a better offer or ask questions.
+>   - Reinforce *“Free Towing”, “Hassle-Free Service”, and “Get Paid Today”*.
+>   - Trust signals: 24/7 service, local RI experts, licensed and insured, many happy sellers.
+>   - Service areas (all RI towns listed in-site text for SEO).
+>
+> - **SEO/Marketing:**  
+>   - Include keywords: junk car removal, cash for cars, Rhode Island, Pawtucket, free towing, sell my car, car recycling.
+>   - Use engaging meta tags, schema for local business, and site copy that inserts city/town names naturally.
+>   - Write Google and Facebook ad headlines and descriptions optimized for intent (pain points: “old car taking space?”, “need fast cash?”, “don’t get scammed—call local!”).
+>   - Include testimonials, FAQ, and “How It Works” in 3 simple steps.
+>
+> - **Sales Psychology/Wordplay:**  
+>   - Use urgency: “Offers valid today only!”, “Limited pickups daily!”
+>   - Play to loss aversion: “Don’t let your clunker lose more value—sell now before it’s too late.”
+>   - Paint a positive outcome: “Clear your driveway, get paid, feel great!”
+>   - Invite curiosity: “Find out what your junk car is really worth—spoiler: it’s more than you think (call for best offer).”
+>   - Be direct and relatable—write at a 7th-grade reading level.
+>
+> - **Contact and Brand:**  
+>   - Brand: Pawtucket Cash for Cars  
+>   - Email: fanningleanna@gmail.com  
+>   - Always display phone number for immediate calls.
+>
+> Output:  
+> - Homepage copy (headline, subhead, value prop, call-to-action)
+> - Google/Facebook ad samples  
+> - 1-2 testimonial mockups  
+> - SEO meta title and description  
+> - “How it Works” (3 steps)
+> - Short FAQ (3-4 Qs)
+> - Local landing copy for “Junk Car Removal in Pawtucket, RI”
+> - List of keywords for on-page SEO
+>
+> Make the copy persuasive, easy to skim, and optimized for search engines and ad quality scores. Use emotional triggers and practical arguments based on proven psychology for high click rates and call volume.
+> 
+> End with a note: “Site powered by AI—get your quote in seconds or call now!”
+
+***
+
+**Tips:**
+- Run this prompt in your AI platform to get tailored copy/design.
+- Adjust competitor, city, or contact info as needed.
+- Copywriting psychology and local SEO focus is built in for maximum impact.[1][2]
+
+Let me know if you want real ad examples, homepage sections, or a wireframee next!
+
+[1](https://danieldoan.net/psychology-based-copywriting/)
+[2](https://www.wordstream.com/blog/ws/2016/03/14/ppc-ad-copywriting)
+[3](https://replit.com/home)
+[4](https://www.peddle.com/cash-for-junk-cars/ri)
+[5](https://www.rfajunkcars.com)
+[6](https://wheelzy.com/we-buy-cars-for-cash/rhode-island)
+[7](https://www.usjunkcars.com/rhode-island/)
+[8](https://www.familycarbuyers.com/rhode-island/)
+[9](https://agentiveaiq.com/listicles/7-must-have-lead-generation-chatbots-for-junk-removal)
+[10](https://leadlocate.com/sales-leads/automotive-lead-providers)
+[11](https://junkcarsus.com/st-rhode-island)
+[12](https://phantombuster.com/blog/ai-automation/ai-prompts-for-lead-generation/)
+[13](https://sellcaradvisor.com/sites-like-peddle/)
+[14](https://www.yelp.com/search?find_desc=Junk+Car+Buyers&find_loc=Pawtucket%2C+RI)
+[15](https://www.linkedin.com/pulse/my-5-best-prompts-better-lead-generation-andy-crestodina-fjjnc)
+[16](https://www.youtube.com/watch?v=PDfh3vGEgQo)
+[17](https://www.youtube.com/watch?v=qS2boRZprvI)
+[18](https://www.facebook.com/groups/792504998496748/posts/1354185345662041/)
+[19](https://reelmind.ai/blog/gemini-auto-sales-ri-ai-for-automotive-marketing)
+[20](https://oppwiser.com/similar-companies/companies-similar-to-peddle)
+[21](https://www.reddit.com/r/FacebookAds/comments/n4p3hb/how_to_actually_get_quality_leads_using_facebook/)
