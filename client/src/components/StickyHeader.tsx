@@ -1,9 +1,10 @@
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PHONE_NUMBER, PHONE_LINK } from "@/config/contact";
 
 export default function StickyHeader() {
-  const phoneNumber = "(401) 555-CASH";
-  const phoneLink = "tel:4015552274";
+  const phoneNumber = PHONE_NUMBER;
+  const phoneLink = PHONE_LINK;
 
   const scrollToQuote = () => {
     const quoteSection = document.getElementById("quote-calculator");

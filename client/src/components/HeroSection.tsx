@@ -1,10 +1,11 @@
 import { Phone, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@assets/generated_images/Tow_truck_picking_up_junk_car_ca8fff96.png";
+import { PHONE_NUMBER, PHONE_LINK } from "@/config/contact";
 
 export default function HeroSection() {
-  const phoneNumber = "(401) 555-CASH";
-  const phoneLink = "tel:4015552274";
+  const phoneNumber = PHONE_NUMBER;
+  const phoneLink = PHONE_LINK;
 
   const scrollToQuote = () => {
     const quoteSection = document.getElementById("quote-calculator");

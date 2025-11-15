@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Phone, DollarSign } from "lucide-react";
+import { PHONE_NUMBER, PHONE_LINK } from "@/config/contact";
+import { apiRequest } from "@/lib/queryClient";
 
 const quoteFormSchema = z.object({
   year: z.string().min(1, "Year is required"),
@@ -50,11 +52,15 @@ export default function QuoteCalculator() {
     return Math.max(250, calculatedQuote * 0.7);
   };
 
-  const onSubmit = (data: QuoteFormData) => {
+  const onSubmit = async (data: QuoteFormData) => {
     const calculatedQuote = calculateQuote(data);
+    try {
+      await apiRequest("POST", "/api/lead", { ...data, estimatedPrice: calculatedQuote });
+    } catch (e) {
+      console.error(e);
+    }
     setQuote(calculatedQuote);
     setShowForm(false);
-    console.log("Quote form submitted:", data, "Quote:", calculatedQuote);
   };
 
   const resetForm = () => {
@@ -63,8 +69,8 @@ export default function QuoteCalculator() {
     setShowForm(true);
   };
 
-  const phoneNumber = "(401) 555-CASH";
-  const phoneLink = "tel:4015552274";
+  const phoneNumber = PHONE_NUMBER;
+  const phoneLink = PHONE_LINK;
 
   return (
     <section id="quote-calculator" className="py-12 lg:py-20 bg-muted/30">

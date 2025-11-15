@@ -1,9 +1,10 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import { PHONE_NUMBER, PHONE_LINK, EMAIL } from "@/config/contact";
 
 export default function Footer() {
-  const phoneNumber = "(401) 555-CASH";
-  const phoneLink = "tel:4015552274";
-  const email = "fanningleanna@gmail.com";
+  const phoneNumber = PHONE_NUMBER;
+  const phoneLink = PHONE_LINK;
+  const email = EMAIL;
 
   return (
     <footer className="bg-muted/50 border-t">

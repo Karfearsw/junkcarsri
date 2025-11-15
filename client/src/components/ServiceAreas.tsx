@@ -9,6 +9,8 @@ const rhodeIslandCities = [
   "West Greenwich", "West Warwick", "Westerly", "Woonsocket",
 ];
 
+import { PHONE_NUMBER } from "@/config/contact";
+
 export default function ServiceAreas() {
   return (
     <section className="py-12 lg:py-20 bg-muted/30">
@@ -36,7 +38,7 @@ export default function ServiceAreas() {
           </div>
 
           <p className="text-center text-sm text-muted-foreground mt-8" data-testid="text-service-areas-note">
-            Don't see your town? We serve the entire state of Rhode Island. Call us at (401) 555-CASH
+            Don't see your town? We serve the entire state of Rhode Island. Call us at {PHONE_NUMBER}
           </p>
         </div>
       </div>
