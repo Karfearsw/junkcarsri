@@ -40,6 +40,23 @@ export default function ServiceAreas() {
           <p className="text-center text-sm text-muted-foreground mt-8" data-testid="text-service-areas-note">
             Don't see your town? We serve the entire state of Rhode Island. Call us at {PHONE_NUMBER}
           </p>
+
+          <div className="text-center mt-12 mb-6">
+            <h3 className="text-2xl font-semibold">Nearby Massachusetts</h3>
+            <p className="text-sm text-muted-foreground">We also serve these nearby cities</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {["Attleboro", "Milford", "Franklin", "Bellingham", "Mansfield"].map((city, index) => (
+              <div
+                key={`ma-${index}`}
+                className="text-center p-3 rounded-md bg-background hover-elevate active-elevate-2"
+                data-testid={`service-area-${city.toLowerCase()}`}
+              >
+                <span className="text-sm font-medium">{city}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

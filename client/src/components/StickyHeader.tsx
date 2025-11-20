@@ -14,15 +14,15 @@ export default function StickyHeader() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 lg:h-10 lg:w-10 rounded-md bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm lg:text-base">PC</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-sm lg:text-base leading-tight">Pawtucket</span>
-              <span className="text-xs text-muted-foreground leading-tight">Cash for Cars</span>
-            </div>
+        <div className="flex items-center gap-3">
+          <img
+            src="/favicon.png"
+            alt="Junk Car Cash RI logo"
+            className="h-8 w-auto lg:h-10 object-contain"
+          />
+          <div className="flex flex-col">
+            <span className="font-bold text-sm lg:text-base leading-tight">Pawtucket</span>
+            <span className="text-xs text-muted-foreground leading-tight">Cash for Cars</span>
           </div>
         </div>
 
