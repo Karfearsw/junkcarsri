@@ -1,30 +1,24 @@
-import { Star } from "lucide-react";
+import { Star, User } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import maleAvatar from "@assets/generated_images/Male_customer_testimonial_avatar_a21a1888.png";
-import femaleAvatar from "@assets/generated_images/Female_customer_testimonial_avatar_33dd118b.png";
-import elderlyAvatar from "@assets/generated_images/Elderly_customer_testimonial_avatar_d73a51c8.png";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const testimonials = [
   {
     name: "Mike Sullivan",
     location: "Pawtucket, RI",
-    image: maleAvatar,
-    rating: 5,
+    rating: 3,
     quote: "Called on Monday, had cash in my hand by Tuesday afternoon. Way easier than I expected! They even towed my car for free from my backyard.",
   },
   {
     name: "Sarah Rodriguez",
     location: "Providence, RI",
-    image: femaleAvatar,
-    rating: 5,
+    rating: 3,
     quote: "Honest people, fair price. My old Honda was just sitting there taking up space. One call and it was gone - plus I got $800! Highly recommend.",
   },
   {
     name: "Robert Chen",
     location: "Warwick, RI",
-    image: elderlyAvatar,
-    rating: 5,
+    rating: 3,
     quote: "Best decision I made all year. They gave me more than the scrap yard offered, picked it up the same day, and were super friendly. A+ service!",
   },
 ];
@@ -47,7 +41,7 @@ export default function Testimonials() {
             <Card key={index} data-testid={`testimonial-card-${index}`}>
               <CardContent className="pt-6 space-y-4">
                 <div className="flex gap-0.5">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  {Array.from({ length: 3 }).map((_, i) => (
                     <Star key={i} className="h-5 w-5 fill-primary text-primary" />
                   ))}
                 </div>
@@ -58,8 +52,9 @@ export default function Testimonials() {
 
                 <div className="flex items-center gap-3 pt-2">
                   <Avatar>
-                    <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                    <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                    <AvatarFallback>
+                      <User className="h-5 w-5" />
+                    </AvatarFallback>
                   </Avatar>
                   <div>
                     <p className="font-semibold text-sm" data-testid={`text-testimonial-name-${index}`}>

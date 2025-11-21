@@ -4,3 +4,4 @@ export const PHONE_LINK = import.meta.env.VITE_PHONE_E164
   ? `tel:${digits(import.meta.env.VITE_PHONE_E164 as string)}`
   : `tel:${digits(PHONE_NUMBER)}`;
 export const EMAIL = import.meta.env.VITE_CONTACT_EMAIL ?? "fanningleanna@gmail.com";
+export const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT ?? "https://formspree.io/f/mdkbyobe";

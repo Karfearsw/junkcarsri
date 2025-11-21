@@ -8,16 +8,29 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Phone, DollarSign } from "lucide-react";
-import { PHONE_NUMBER, PHONE_LINK } from "@/config/contact";
+import { PHONE_NUMBER, PHONE_LINK, FORMSPREE_ENDPOINT } from "@/config/contact";
 import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 
+const currentYear = new Date().getFullYear();
 const quoteFormSchema = z.object({
-  year: z.string().min(1, "Year is required"),
+  year: z
+    .string()
+    .regex(/^\d{4}$/, "Enter 4-digit year")
+    .refine((v) => {
+      const y = parseInt(v, 10);
+      return y >= 1980 && y <= currentYear + 1;
+    }, "Enter a realistic year"),
   make: z.string().min(1, "Make is required"),
   model: z.string().min(1, "Model is required"),
-  condition: z.string().min(1, "Condition is required"),
+  condition: z
+    .string()
+    .refine((v) => ["excellent", "good", "fair", "poor"].includes(v), "Select condition"),
   name: z.string().min(2, "Name is required"),
-  phone: z.string().min(10, "Valid phone number required"),
+  phone: z
+    .string()
+    .transform((v) => v.replace(/\D/g, ""))
+    .refine((d) => d.length >= 10 && d.length <= 15, "Enter valid phone number"),
   email: z.string().email("Valid email required").optional().or(z.literal("")),
 });
 
@@ -26,6 +39,8 @@ type QuoteFormData = z.infer<typeof quoteFormSchema>;
 export default function QuoteCalculator() {
   const [quote, setQuote] = useState<number | null>(null);
   const [showForm, setShowForm] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<QuoteFormData>({
     resolver: zodResolver(quoteFormSchema),
@@ -40,27 +55,75 @@ export default function QuoteCalculator() {
     },
   });
 
+  const classifyVehicle = (make: string, model: string): "small" | "suv" => {
+    const s = `${make} ${model}`.toLowerCase();
+    const suvKeywords = [
+      "suv","cr-v","rav4","highlander","tahoe","explorer","escape","pilot","rogue","cx-",
+      "sorento","sportage","x5","glc","outback","forester","santa fe","pathfinder","grand cherokee"
+    ];
+    return suvKeywords.some((k) => s.includes(k)) ? "suv" : "small";
+  };
+
+  const pricingConfig = {
+    small: { min: 200, max: 300 },
+    suv: { min: 400, max: 600 },
+  } as const;
+
   const calculateQuote = (data: QuoteFormData): number => {
-    const baseValue = 500;
-    const yearValue = parseInt(data.year) > 2000 ? 200 : 100;
-    const conditionMultiplier = 
-      data.condition === "excellent" ? 2.5 :
-      data.condition === "good" ? 2 :
-      data.condition === "fair" ? 1.5 : 1;
-    
-    const calculatedQuote = Math.floor((baseValue + yearValue) * conditionMultiplier);
-    return Math.max(250, calculatedQuote * 0.7);
+  const type = classifyVehicle(data.make, data.model);
+    const { min, max } = pricingConfig[type];
+    const span = max - min;
+    const yearNum = parseInt(data.year, 10) || 0;
+    const yearScore = Math.max(0, Math.min(1, (yearNum - 1985) / (2020 - 1985)));
+    const conditionScore =
+      data.condition === "excellent" ? 1 :
+      data.condition === "good" ? 0.8 :
+      data.condition === "fair" ? 0.5 : 0.2;
+    const score = (yearScore + conditionScore) / 2;
+    const price = min + span * score;
+    return Math.round(price / 10) * 10;
   };
 
   const onSubmit = async (data: QuoteFormData) => {
     const calculatedQuote = calculateQuote(data);
+    setSubmitting(true);
+
+    // Log to local database (non-blocking)
     try {
       await apiRequest("POST", "/api/lead", { ...data, estimatedPrice: calculatedQuote });
     } catch (e) {
+      console.warn("Lead logging failed (likely preview server without API)", e);
+    }
+
+    // Always attempt Formspree submission
+    try {
+      const form = new FormData();
+      form.append("subject", "New Quote Submission");
+      form.append("name", data.name);
+      form.append("email", data.email ?? "");
+      form.append("phone", data.phone);
+      form.append("year", String(data.year));
+      form.append("make", data.make);
+      form.append("model", data.model);
+      form.append("condition", data.condition);
+      form.append("estimatedPrice", String(calculatedQuote));
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: form,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        toast({ title: "Quote submitted", description: "We’ll follow up soon." });
+      } else {
+        toast({ title: "Submission failed", description: "Please try again or call us." });
+      }
+    } catch (e) {
       console.error(e);
+      toast({ title: "Network error", description: "Check connection and try again." });
     }
     setQuote(calculatedQuote);
     setShowForm(false);
+    setSubmitting(false);
   };
 
   const resetForm = () => {
@@ -234,9 +297,10 @@ export default function QuoteCalculator() {
                       size="lg"
                       className="w-full h-14 text-lg font-semibold"
                       data-testid="button-submit-quote"
+                      disabled={submitting}
                     >
                       <DollarSign className="mr-2 h-5 w-5" />
-                      Get My Instant Quote
+                      {submitting ? "Submitting..." : "Get My Instant Quote"}
                     </Button>
                   </form>
                 </Form>
