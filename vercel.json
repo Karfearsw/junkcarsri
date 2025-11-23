@@ -1,6 +1,16 @@
 {
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "server/index.ts" },
-    { "source": "/(.*)", "destination": "/index.html" }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/api/(.*)", "dest": "server/index.ts" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/faviconri.png",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0" },
+        { "key": "Content-Type", "value": "image/png" }
+      ]
+    }
   ]
 }
