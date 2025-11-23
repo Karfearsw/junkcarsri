@@ -16,7 +16,7 @@ export default function StickyHeader() {
       <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <img
-            src="/faviconri.png?v=1"
+            src="/faviconri.png?v=2"
             alt="Junk Car Cash RI logo"
             className="h-8 w-auto lg:h-10 object-contain"
           />

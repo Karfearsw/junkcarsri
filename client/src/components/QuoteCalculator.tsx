@@ -11,6 +11,7 @@ import { Phone, DollarSign } from "lucide-react";
 import { PHONE_NUMBER, PHONE_LINK, FORMSPREE_ENDPOINT } from "@/config/contact";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { calculateQuote } from "@/lib/quote";
 
 const currentYear = new Date().getFullYear();
 const quoteFormSchema = z.object({
@@ -55,34 +56,7 @@ export default function QuoteCalculator() {
     },
   });
 
-  const classifyVehicle = (make: string, model: string): "small" | "suv" => {
-    const s = `${make} ${model}`.toLowerCase();
-    const suvKeywords = [
-      "suv","cr-v","rav4","highlander","tahoe","explorer","escape","pilot","rogue","cx-",
-      "sorento","sportage","x5","glc","outback","forester","santa fe","pathfinder","grand cherokee"
-    ];
-    return suvKeywords.some((k) => s.includes(k)) ? "suv" : "small";
-  };
-
-  const pricingConfig = {
-    small: { min: 200, max: 300 },
-    suv: { min: 400, max: 600 },
-  } as const;
-
-  const calculateQuote = (data: QuoteFormData): number => {
-  const type = classifyVehicle(data.make, data.model);
-    const { min, max } = pricingConfig[type];
-    const span = max - min;
-    const yearNum = parseInt(data.year, 10) || 0;
-    const yearScore = Math.max(0, Math.min(1, (yearNum - 1985) / (2020 - 1985)));
-    const conditionScore =
-      data.condition === "excellent" ? 1 :
-      data.condition === "good" ? 0.8 :
-      data.condition === "fair" ? 0.5 : 0.2;
-    const score = (yearScore + conditionScore) / 2;
-    const price = min + span * score;
-    return Math.round(price / 10) * 10;
-  };
+  
 
   const onSubmit = async (data: QuoteFormData) => {
     const calculatedQuote = calculateQuote(data);
