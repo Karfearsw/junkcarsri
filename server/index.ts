@@ -66,6 +66,7 @@ app.use((req, res, next) => {
     
     // Fallback to index.html for client-side routing
     app.get("*", (_req, res) => {
+      res.type("html");
       res.sendFile(path.join(distPath, "index.html"));
     });
   } else if (app.get("env") === "development") {
