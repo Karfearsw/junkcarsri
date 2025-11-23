@@ -100,3 +100,6 @@ Thumbs.db
 logs/
 *.log
 app-*.log
+
+# Application storage (contains sensitive runtime data)
+server/storage/
